@@ -71,7 +71,8 @@ export default function Home () {
   }
 
     return( <>
-    <div className='grid grid-cols-[500px_minmax(900px,_1fr)] '>
+    <div className='grid grid-cols-[500px_minmax(900px,_1fr)] '>  
+    {products.length === 0 ? <a href="/add"><img src="src/assets/first-project.png" alt="" className='mt-6 ml-96 rounded-xl border-2 border-gray-300'/></a>  : ''}
 {products.map((project) => { return (
 <div className='mt-4 ml-[420px] '>
 <Card className="mt-6 mb-12 w-96 ">
@@ -101,7 +102,9 @@ export default function Home () {
     </Card>
 </div>
     ) })}
+
     </div>
+    
   </>
     )
 }

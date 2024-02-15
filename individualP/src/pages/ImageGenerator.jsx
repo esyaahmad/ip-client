@@ -80,7 +80,14 @@ export default function generator() {
                     <option value="car">Car</option>
                     <option value="Scifi">Scifi</option>
                     <option value="Building">Building</option>
-                    <option value="Anime">Anime</option>
+                    <option value="Flower">Flower</option>
+                    <option value="Forest">Forest</option>
+                    <option value="Graphic">Graphic</option>
+                    <option value="Animals">Animals</option>
+                    <option value="Food">Food</option>
+                    <option value="Technology">Technology</option>
+                    <option value="Space">Space</option>
+                    <option value="Summer">Summer</option>
               </select>
       </li>
         <li className='mx-8'>

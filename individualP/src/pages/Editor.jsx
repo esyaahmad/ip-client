@@ -5,6 +5,7 @@ import SidebarItem from '../components/SlidebarItem.jsx'
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate, useParams } from "react-router-dom";
+import html2canvas from 'html2canvas'
 
 const DEFAULT_OPTIONS = [
   {
@@ -140,9 +141,22 @@ function App() {
   //   ctx.drawImage(img, 10, 10);
   // };
 
+  const download = () => {
+    const el = document.getElementById('edited')
+    if(!el) {
+      return
+    }
+    html2canvas(el).then((canvas)=> {
+      let image = canvas.toDataURL("image/jpeg")
+      console.log('the image is', image);
+    }).catch(err=> {
+      console.log(err);
+    })
+  }
+
   return (
-    <div className="container mt-6 ml-[320px] max-w-[950px] rounded-xl">
-      <img id="edited"className="main-image rounded-xl" src={product.imageUrl}  style={getImageStyle()} alt="" />
+    <div id="edited" className="container mt-6 ml-[320px] max-w-[950px] rounded-xl">
+      <img className="main-image rounded-xl" src={product.imageUrl}  style={getImageStyle()} alt="" />
       <div className="sidebar">
         {options.map((option, index) => {
           return (
@@ -154,6 +168,7 @@ function App() {
             />
           )
         })}
+        <button className='btn' onClick={download}>Download</button>
       </div>
       <Slider
         min={selectedOption.range.min}

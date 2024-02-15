@@ -42,7 +42,7 @@ export default function Login () {
 
     async function googleLogin(codeResponse) {
       try {
-          console.log(codeResponse);
+          // console.log(codeResponse);
           const { data } = await axios.post(
               `${url}/google-login`, null, {
               headers: {
@@ -50,6 +50,12 @@ export default function Login () {
               }
           });
           localStorage.setItem("access_token", data.access_token)
+          Swal.fire({
+            icon: "success",
+            title: `Logged in`,
+            showConfirmButton: false,
+            timer: 1000
+        })
           navigate('/')
       } catch (error) {
           console.log(error);
