@@ -62,8 +62,8 @@ export default function patchImage() {
     }
     return (
         <>
-              <div className="relative flex flex-col justify-center h-[85dvh] overflow-hidden bg-base-100">
-        <div className="w-full p-6 m-auto rounded-lg shadow-md lg:max-w-lg bg-base-200">
+              <div className="relative flex flex-col justify-center h-[85dvh] overflow-hidden ">
+        <div className="w-full p-6 m-auto rounded-lg shadow-md lg:max-w-lg bg-white">
           <h1 className="text-3xl font-semibold text-center text-accent-focus">Change Image</h1>
           <img src={product.imgUrl} alt="" />
 

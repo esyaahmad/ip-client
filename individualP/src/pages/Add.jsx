@@ -29,14 +29,14 @@ export default function Add() {
         } catch (error) {
           console.log(error);
             Swal.fire({
-                title: error.response.data.error,
+                title: error.response.data.message,
                 icon: "error"
             });
         }
     }
   return (
     <>
-      <Form handleSubmit={handleSubmit} titleName={'Add New Project'} desc={'Enter your project detail.'}/>
+      <Form handleSubmit={handleSubmit} titleName={'Add New Project'} desc={'Enter your project detail.'} img={'/src/assets/OPE.png'}/>
       
 
       {/* <div className="relative flex flex-col justify-center h-screen overflow-hidden">

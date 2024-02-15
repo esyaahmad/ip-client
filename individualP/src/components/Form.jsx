@@ -6,7 +6,7 @@ import { Card, Input, Checkbox, Button, Typography } from "@material-tailwind/re
 
 
 
-export default function ProductsForm({ handleSubmit, product, titleName, desc}) {
+export default function ProductsForm({ handleSubmit, product, titleName, desc, img}) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [imageUrl, setImageUrl] = useState("https://mpc.kdu.ac.lk/wp-content/uploads/2022/01/Insert-Image-Here.png");
@@ -48,7 +48,7 @@ export default function ProductsForm({ handleSubmit, product, titleName, desc}) 
 
   return (
     <>
-    <section className="m-8 flex gap-4 ml-[320px]">
+    <section className="m-8 flex gap-4 ml-[320px] ">
         <div className="w-full lg:w-3/5 mt-0">
           <div className="text-center">
             <Typography variant="h2" className="font-bold mb-4">
@@ -66,7 +66,7 @@ export default function ProductsForm({ handleSubmit, product, titleName, desc}) 
               <Input
                 type="text"
                 size="lg"
-                placeholder="name@mail.com"
+                placeholder="your title project"
                 onChange={(e) => setTitle(e.target.value)} 
                 value={title || ''}
                 className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
@@ -80,7 +80,7 @@ export default function ProductsForm({ handleSubmit, product, titleName, desc}) 
               <Input
                 type="text"
                 size="lg"
-                placeholder="********"
+                placeholder="your project description"
                 value={description || ''}
                 onChange={(e) => setDescription(e.target.value)}
                 className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
@@ -89,7 +89,7 @@ export default function ProductsForm({ handleSubmit, product, titleName, desc}) 
                 }}
               />
               <label className="label">
-                <span className="text-base label-text">Category</span>
+                <span className="text-base label-text text-black">Category</span>
               </label>
               <select className="w-full input input-bordered input-primary" onChange={(e) => setCategoryId(e.target.value)} name="category" id="" value={categoryId}>
                 <option value="">Choose</option>
@@ -117,7 +117,7 @@ export default function ProductsForm({ handleSubmit, product, titleName, desc}) 
           </form>
         </div>
         <div className="w-2/5 h-auto max-h-[660px] hidden lg:block">
-          <img src="/src/assets/login.jpg" className="h-full w-full object-cover rounded-3xl" />
+          <img src={img} className="h-full w-full object-cover rounded-3xl" />
         </div>
       </section>
 

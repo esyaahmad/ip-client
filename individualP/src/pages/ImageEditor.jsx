@@ -37,29 +37,8 @@ export default function Home () {
         fetchData();
     }, [])
 
-    console.log(products);
+    // console.log(products);
 
-    async function handleDelete(id) {
-        try {
-            await axios.delete(`http://localhost:3000/projects/${id}`, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.access_token}`
-                }
-            })
-    
-            Swal.fire({
-                title: 'Delete success',
-                icon: "success"
-            });
-    
-            fetchData()
-        } catch (error) {
-            Swal.fire({
-                title: error.response.data.error,
-                icon: "error"
-            });
-        }
-    }
 
     function handleEdit(id) {
         navigate(`/edit/${id}`)
@@ -67,22 +46,20 @@ export default function Home () {
   
     
     function handleChangeImage(id) {
-      navigate(`/patch/${id}`)
+      navigate(`/editor/${id}`)
   }
 
     return( <>
-    <div className='grid grid-cols-[500px_minmax(900px,_1fr)] '>
+    <div className='grid grid-cols-[500px_minmax(900px,_1fr)]'>
 {products.map((project) => { return (
-<div className='mt-4 ml-[420px] '>
+<div key={project.id} className='mt-4 ml-[420px] '>
 <Card className="mt-6 mb-12 w-96 ">
-        <button onClick={() => handleChangeImage(project.id)}>
-      <CardHeader color='rgba(255, 255, 255, .4)' className="relative h-56">
-          <img className=' '
+      <CardHeader  className="relative h-56">
+        <img className=' '
           src={project.imageUrl}
           alt="card-image"
         />
       </CardHeader>
-      </button>
       <CardBody>
         <Typography variant="h5" color="blue-gray" className="mb-2">
           {project.title}
@@ -91,11 +68,10 @@ export default function Home () {
           {project.description}
         </Typography>
       </CardBody>
-      <CardFooter className="pt-0 flex justify-between  ">
-        <Button onClick={() => handleEdit(project.id)}>Update</Button>
-        <Button onClick={() => handleChangeImage(project.id)}>Change Image</Button>
+      <CardFooter className="pt-0 flex justify-center  ">
+        {/* <Button onClick={() => handleEdit(project.id)}>Update</Button> */}
+        <Button className="w-full" onClick={() => handleChangeImage(project.id)}>Edit Image</Button>
 
-        <Button onClick={() => handleDelete(project.id)}>Delete</Button>
 
       </CardFooter>
     </Card>

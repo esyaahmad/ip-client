@@ -7,6 +7,12 @@ import Add from '../pages/Add'
 import Edit from '../pages/Edit'
 import ChangeImage from '../pages/ChangeImage'
 import ImageGenerator from '../pages/ImageGenerator'
+import ImageEditor from '../pages/ImageEditor'
+import Editor from '../pages/Editor'
+import Credit from '../pages/Credit'
+
+
+
 
 
 
@@ -67,7 +73,18 @@ const router = createBrowserRouter([
             path:'/wallpaper',
             element: <ImageGenerator/>
         },
-
+        {
+            path:'/editor',
+            element: <ImageEditor/>
+        },
+        {
+            path:'/editor/:id',
+            element: <Editor/>
+        },
+        {
+            path:'/credit',
+            element: <Credit/>
+        },
     ]
     }
 

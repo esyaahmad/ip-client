@@ -26,7 +26,9 @@ export default function DefaultSidebar() {
     localStorage.clear()
     Swal.fire({
         icon: "success",
-        title: `Logged Out`
+        title: `Logged Out`,
+        showConfirmButton: false,
+        timer: 1000
     })
     navigate('/login')
 }
@@ -38,7 +40,7 @@ export default function DefaultSidebar() {
       <div className="mb-2 p-4">
         <Typography variant="h5" color="blue-gray">
           <Link to="/">
-          <button>Sidebar</button>
+          <button>Online Photo Editor</button>
           </Link>
         </Typography>
       </div>
@@ -69,18 +71,24 @@ export default function DefaultSidebar() {
           {/* </Link> */}
 
         </ListItem>
+        <Link to="/editor">
         <ListItem>
           <ListItemPrefix>
-            <UserCircleIcon className="h-5 w-5" />
+            <ShoppingBagIcon className="h-5 w-5" />
           </ListItemPrefix>
-          Profile
+          <button>Editor</button>
         </ListItem>
+          </Link>
+          <Link to="/credit">
+
         <ListItem>
           <ListItemPrefix>
             <Cog6ToothIcon className="h-5 w-5" />
           </ListItemPrefix>
-          Settings
+          Credit to
         </ListItem>
+        </Link>
+
         <ListItem>
           <ListItemPrefix>
             <PowerIcon className="h-5 w-5" />

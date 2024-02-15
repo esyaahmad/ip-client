@@ -33,10 +33,11 @@ export default function edit() {
     fetchProduct();
   }, []);
 
-  async function handleSubmit(event, title, description, categoryId) {
+  async function handleSubmit(event, title, description, imageUrl ,categoryId) {
     event.preventDefault();
     try {
       const edited = { title, description, categoryId: +categoryId };
+      console.log(edited)
 
       await axios.put(`${url}/projects/${id}`, edited, {
         headers: {
@@ -61,7 +62,7 @@ export default function edit() {
 
   return (
     <>
-      <Form handleSubmit={handleSubmit} product={product} titleName={'Edit Your Project'} desc={'Enter your project detail.'}/>
+      <Form handleSubmit={handleSubmit} product={product} titleName={'Edit Your Project'} desc={'Enter your project detail.'} img={'/src/assets/OPE (1).png'}/>
     </>
   );
 }
