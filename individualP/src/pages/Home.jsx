@@ -55,7 +55,7 @@ export default function Home() {
         icon: "success",
       });
 
-      fetchData();
+     
     } catch (error) {
       Swal.fire({
         title: error.response.data.error,
@@ -64,6 +64,10 @@ export default function Home() {
     }
   }
 
+    useEffect(() => {
+    dispatch(fetchAsync());
+  }, []);
+  
   function handleEdit(id) {
     navigate(`/edit/${id}`);
   }
