@@ -134,7 +134,7 @@ export default function Login() {
           </form>
         </div>
         <div className="w-2/5 h-auto max-h-[660px] hidden lg:block">
-          <img src="/src/assets/OPE.png" className="h-full w-full object-cover rounded-3xl" />
+          <img src="../assets/OPE.png" className="h-full w-full object-cover rounded-3xl" />
         </div>
       </section>
 
