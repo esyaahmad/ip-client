@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { fetchAsync } from "../features/my-project/my-project-slicer";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import { Card, CardHeader, CardBody, CardFooter, Typography, Button } from "@material-tailwind/react";
 
 export default function Home() {
@@ -77,9 +77,9 @@ export default function Home() {
     <>
       <div className="grid grid-cols-[500px_minmax(900px,_1fr)] ">
         {myProject.length === 0 ? (
-          <a href="/add">
+           <Link to="/add">
             <img src="/assets/first-project.png" alt="" className="mt-6 ml-96 rounded-xl border-2 border-gray-300" />
-          </a>
+          </Link>
         ) : (
           ""
         )}
