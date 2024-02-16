@@ -36,7 +36,7 @@ export default function Add() {
   }
   return (
     <>
-      <Form handleSubmit={handleSubmit} titleName={"Add New Project"} desc={"Enter your project detail."} img={"/src/assets/OPE.png"} />
+      <Form handleSubmit={handleSubmit} titleName={"Add New Project"} desc={"Enter your project detail."} img={"/assets/OPE.png"} />
     </>
   );
 }
