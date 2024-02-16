@@ -61,7 +61,7 @@ export default function edit() {
 
   return (
     <>
-      <Form handleSubmit={handleSubmit} product={product} titleName={"Edit Your Project"} desc={"Enter your project detail."} img={"/src/assets/OPE (1).png"} />
+      <Form handleSubmit={handleSubmit} product={product} titleName={"Edit Your Project"} desc={"Enter your project detail."} img={"/assets/OPE (1).png"} />
     </>
   );
 }
