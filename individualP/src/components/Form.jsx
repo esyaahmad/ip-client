@@ -1,21 +1,18 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { useParams } from 'react-router-dom'
+import { useParams } from "react-router-dom";
 import { Card, Input, Checkbox, Button, Typography } from "@material-tailwind/react";
 
-
-
-export default function ProductsForm({ handleSubmit, product, titleName, desc, img}) {
+export default function ProductsForm({ handleSubmit, product, titleName, desc, img }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [imageUrl, setImageUrl] = useState("https://mpc.kdu.ac.lk/wp-content/uploads/2022/01/Insert-Image-Here.png");
-  const [categoryId, setCategoryId] = useState('');
+  const [categoryId, setCategoryId] = useState("");
   const [categories, setCategories] = useState([]);
-  const url = 'http://localhost:3000'
+  const url = "http://localhost:3000";
 
-
-//   console.log(product);
+  //   console.log(product);
   useEffect(() => {
     if (product) {
       setTitle(product.title);
@@ -31,10 +28,10 @@ export default function ProductsForm({ handleSubmit, product, titleName, desc, i
           Authorization: `Bearer ${localStorage.access_token}`,
         },
       });
-    //   console.log(data.category);
+      //   console.log(data.category);
       setCategories(data.category);
     } catch (error) {
-        console.log(error);
+      console.log(error);
       Swal.fire({
         title: error.response.data.error,
         icon: "error",
@@ -43,12 +40,12 @@ export default function ProductsForm({ handleSubmit, product, titleName, desc, i
   }
 
   useEffect(() => {
-    fetchCategories()
-}, [])
+    fetchCategories();
+  }, []);
 
   return (
     <>
-    <section className="m-8 flex gap-4 ml-[320px] ">
+      <section className="m-8 flex gap-4 ml-[320px] ">
         <div className="w-full lg:w-3/5 mt-0">
           <div className="text-center">
             <Typography variant="h2" className="font-bold mb-4">
@@ -67,8 +64,8 @@ export default function ProductsForm({ handleSubmit, product, titleName, desc, i
                 type="text"
                 size="lg"
                 placeholder="your title project"
-                onChange={(e) => setTitle(e.target.value)} 
-                value={title || ''}
+                onChange={(e) => setTitle(e.target.value)}
+                value={title || ""}
                 className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
                 labelProps={{
                   className: "before:content-none after:content-none",
@@ -81,7 +78,7 @@ export default function ProductsForm({ handleSubmit, product, titleName, desc, i
                 type="text"
                 size="lg"
                 placeholder="your project description"
-                value={description || ''}
+                value={description || ""}
                 onChange={(e) => setDescription(e.target.value)}
                 className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
                 labelProps={{
@@ -120,66 +117,6 @@ export default function ProductsForm({ handleSubmit, product, titleName, desc, i
           <img src={img} className="h-full w-full object-cover rounded-3xl" />
         </div>
       </section>
-
-      {/* <div className="relative flex flex-col justify-center h-screen overflow-hidden m-2 p-2">
-        <div className="w-full p-6 m-auto bg-white rounded-md shadow-md ring-2 ring-gray-800/50 lg:max-w-lg">
-          <h1 className="text-3xl font-semibold text-center text-gray-700">{titleName}</h1>
-          <form className="space-y-4" onSubmit={(e) => handleSubmit(e, name, description, price, imgUrl, stock, categoryId)}>
-            <div>
-              <label className="label">
-                <span className="text-base label-text">Name</span>
-              </label>
-              <input type="text" placeholder="Enter Name" className="w-full input input-bordered" onChange={(e) => setName(e.target.value)} value={name || ''} />
-            </div>
-            <div>
-              <label className="label">
-                <span className="text-base label-text">Description</span>
-              </label>
-              <input type="text" placeholder=" Enter Description" className="w-full input input-bordered" onChange={(e) => setDescription(e.target.value)} value={description || ''} />
-            </div>
-            <div>
-              <label className="label">
-                <span className="text-base label-text">Price</span>
-              </label>
-              <input type="number" placeholder="Enter Price" className="w-full input input-bordered" onChange={(e) => setPrice(e.target.value)} value={price || 0} />
-            </div>
-            <div>
-              <label className="label">
-                <span className="text-base label-text">Stock</span>
-              </label>
-              <input type="number" placeholder="Enter Stock" className="w-full input input-bordered" onChange={(e) => setStock(e.target.value)} value={stock ||0} />
-            </div>
-            <div>
-              <label className="label">
-                <span className="text-base label-text">Image (URL)</span>
-              </label>
-              <input type="text" placeholder="Enter Image URL" className="w-full input input-bordered" onChange={(e) => setImgUrl(e.target.value)} value={imgUrl||''} />
-            </div>
-            <div>
-              <label className="label">
-                <span className="text-base label-text">Category</span>
-              </label>
-              <select className="w-full input input-bordered input-primary" onChange={(e) => setCategoryId(e.target.value)} name="category" id="" value={categoryId}>
-                <option value="">Choose</option>
-                {categories.map((category) => {
-                  return (
-                    <option key={category.id} value={category.id}>
-                      {category.name}
-                    </option>
-                  );
-                })}
-              </select>
-            </div>
-            <br />
-            <div>
-              <button className="btn btn-block" type="submit">
-                Add
-              </button>
-            </div>
-          </form>
-        </div>
-      </div> */}
-      
     </>
   );
 }

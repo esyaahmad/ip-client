@@ -8,17 +8,16 @@ export default function edit() {
   const [product, setProduct] = useState([]);
   const { id } = useParams();
   const navigate = useNavigate();
-  const url = 'http://localhost:3000'
-
+  const url = "http://localhost:3000";
 
   async function fetchProduct() {
     try {
       const { data } = await axios.get(`${url}/projects/${id}`, {
         headers: {
-            Authorization: `Bearer ${localStorage.access_token}`
-        }
-    });
-        // console.log(data);
+          Authorization: `Bearer ${localStorage.access_token}`,
+        },
+      });
+      // console.log(data);
       setProduct(data);
     } catch (error) {
       console.log(error);
@@ -33,11 +32,11 @@ export default function edit() {
     fetchProduct();
   }, []);
 
-  async function handleSubmit(event, title, description, imageUrl ,categoryId) {
+  async function handleSubmit(event, title, description, imageUrl, categoryId) {
     event.preventDefault();
     try {
       const edited = { title, description, categoryId: +categoryId };
-      console.log(edited)
+      console.log(edited);
 
       await axios.put(`${url}/projects/${id}`, edited, {
         headers: {
@@ -62,7 +61,7 @@ export default function edit() {
 
   return (
     <>
-      <Form handleSubmit={handleSubmit} product={product} titleName={'Edit Your Project'} desc={'Enter your project detail.'} img={'/src/assets/OPE (1).png'}/>
+      <Form handleSubmit={handleSubmit} product={product} titleName={"Edit Your Project"} desc={"Enter your project detail."} img={"/src/assets/OPE (1).png"} />
     </>
   );
 }

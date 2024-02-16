@@ -1,92 +1,92 @@
-import React, { useState, useEffect } from 'react';
-import '../App.css';
-import Slider from '../components/Slider.jsx'
-import SidebarItem from '../components/SlidebarItem.jsx'
+import React, { useState, useEffect } from "react";
+import "../App.css";
+import Slider from "../components/Slider.jsx";
+import SidebarItem from "../components/SlidebarItem.jsx";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate, useParams } from "react-router-dom";
-import html2canvas from 'html2canvas'
+import html2canvas from "html2canvas";
 
 const DEFAULT_OPTIONS = [
   {
-    name: 'Brightness',
-    property: 'brightness',
+    name: "Brightness",
+    property: "brightness",
     value: 100,
     range: {
       min: 0,
-      max: 200
+      max: 200,
     },
-    unit: '%'
+    unit: "%",
   },
   {
-    name: 'Contrast',
-    property: 'contrast',
+    name: "Contrast",
+    property: "contrast",
     value: 100,
     range: {
       min: 0,
-      max: 200
+      max: 200,
     },
-    unit: '%'
+    unit: "%",
   },
   {
-    name: 'Saturation',
-    property: 'saturate',
+    name: "Saturation",
+    property: "saturate",
     value: 100,
     range: {
       min: 0,
-      max: 200
+      max: 200,
     },
-    unit: '%'
+    unit: "%",
   },
   {
-    name: 'Grayscale',
-    property: 'grayscale',
+    name: "Grayscale",
+    property: "grayscale",
     value: 0,
     range: {
       min: 0,
-      max: 100
+      max: 100,
     },
-    unit: '%'
+    unit: "%",
   },
   {
-    name: 'Sepia',
-    property: 'sepia',
+    name: "Sepia",
+    property: "sepia",
     value: 0,
     range: {
       min: 0,
-      max: 100
+      max: 100,
     },
-    unit: '%'
+    unit: "%",
   },
   {
-    name: 'Hue Rotate',
-    property: 'hue-rotate',
+    name: "Hue Rotate",
+    property: "hue-rotate",
     value: 0,
     range: {
       min: 0,
-      max: 360
+      max: 360,
     },
-    unit: 'deg'
+    unit: "deg",
   },
   {
-    name: 'Blur',
-    property: 'blur',
+    name: "Blur",
+    property: "blur",
     value: 0,
     range: {
       min: 0,
-      max: 20
+      max: 20,
     },
-    unit: 'px'
-  }
-]
+    unit: "px",
+  },
+];
 
 function App() {
-  const [selectedOptionIndex, setSelectedOptionIndex] = useState(0)
-  const [options, setOptions] = useState(DEFAULT_OPTIONS)
-  const selectedOption = options[selectedOptionIndex]
+  const [selectedOptionIndex, setSelectedOptionIndex] = useState(0);
+  const [options, setOptions] = useState(DEFAULT_OPTIONS);
+  const selectedOption = options[selectedOptionIndex];
 
   const [product, setProduct] = useState([]);
-  const url = 'http://localhost:3000'
+  const url = "http://localhost:3000";
 
   const { id } = useParams();
 
@@ -94,10 +94,10 @@ function App() {
     try {
       const { data } = await axios.get(`${url}/projects/${id}`, {
         headers: {
-            Authorization: `Bearer ${localStorage.access_token}`
-        }
-    });
-        // console.log(data);
+          Authorization: `Bearer ${localStorage.access_token}`,
+        },
+      });
+      // console.log(data);
       setProduct(data);
     } catch (error) {
       console.log(error);
@@ -111,29 +111,27 @@ function App() {
   useEffect(() => {
     fetchProduct();
   }, []);
-//   console.log(product);
-
+  //   console.log(product);
 
   function handleSliderChange({ target }) {
-    setOptions(prevOptions => {
+    setOptions((prevOptions) => {
       return prevOptions.map((option, index) => {
-        if (index !== selectedOptionIndex) return option
-        return { ...option, value: target.value }
-      })
-    })
+        if (index !== selectedOptionIndex) return option;
+        return { ...option, value: target.value };
+      });
+    });
   }
 
   function getImageStyle() {
-    const filters = options.map(option => {
-      return `${option.property}(${option.value}${option.unit})`
-    })
+    const filters = options.map((option) => {
+      return `${option.property}(${option.value}${option.unit})`;
+    });
 
-    return { filter: filters.join(' ') }
+    return { filter: filters.join(" ") };
   }
 
+  console.log(getImageStyle());
 
-  console.log(getImageStyle())
- 
   // window.onload = function() {
   //   const canvas = document.getElementById("myCanvas");
   //   const ctx = canvas.getContext("2d");
@@ -142,47 +140,43 @@ function App() {
   // };
 
   const download = () => {
-    const el = document.getElementById('edited')
-    if(!el) {
-      return
+    const el = document.getElementById("edited");
+    if (!el) {
+      return;
     }
-    html2canvas(el).then((canvas)=> {
-      let image = canvas.toDataURL("image/jpeg")
-      console.log('the image is', image);
-    }).catch(err=> {
-      console.log(err);
-    })
-  }
+    html2canvas(el)
+      .then((canvas) => {
+        let image = canvas.toDataURL("image/jpeg");
+        // console.log('the image is', image);
+        const a = document.createElement("a");
+        a.href = image;
+        a.download = "Capture.jpeg";
+        a.click();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
-    <div id="edited" className="container mt-6 ml-[320px] max-w-[950px] rounded-xl">
-      <img className="main-image rounded-xl" src={product.imageUrl}  style={getImageStyle()} alt="" />
-      <div className="sidebar">
-        {options.map((option, index) => {
-          return (
-            <SidebarItem
-              key={index}
-              name={option.name}
-              active={index === selectedOptionIndex}
-              handleClick={() => setSelectedOptionIndex(index)}
-            />
-          )
-        })}
-        <button className='btn' onClick={download}>Download</button>
-      </div>
-      <Slider
-        min={selectedOption.range.min}
-        max={selectedOption.range.max}
-        value={selectedOption.value}
-        handleChange={handleSliderChange}
-      />
+    <div id="edited">
+      <div className="container mt-6 ml-[320px] max-w-[950px] rounded-xl">
+        <a href="">
+          <img className="main-image rounded-xl" src={product.imageUrl} style={getImageStyle()} alt="" />
+        </a>
 
-        
+        <div className="sidebar">
+          {options.map((option, index) => {
+            return <SidebarItem key={index} name={option.name} active={index === selectedOptionIndex} handleClick={() => setSelectedOptionIndex(index)} />;
+          })}
+          <button className="btn" onClick={download}>
+            Download
+          </button>
+        </div>
+        <Slider min={selectedOption.range.min} max={selectedOption.range.max} value={selectedOption.value} handleChange={handleSliderChange} />
+      </div>
     </div>
-    
-    
-  )
-  
+  );
 }
 
 export default App;
