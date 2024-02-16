@@ -121,7 +121,7 @@ export default function Login() {
                 <GoogleLogin onSuccess={googleLogin} />
               </Button>
               <Button onClick={handleGithub} size="lg" color="white" className="flex items-center gap-2 justify-center shadow-md" fullWidth>
-                <img src="src/assets/25231.png" height={24} width={24} alt="" />
+                <img src="/assets/25231.png" height={24} width={24} alt="" />
                 <span>Sign in With Github</span>
               </Button>
             </div>
@@ -134,7 +134,7 @@ export default function Login() {
           </form>
         </div>
         <div className="w-2/5 h-auto max-h-[660px] hidden lg:block">
-          <img src="/src/assets/OPE.png" className="h-full w-full object-cover rounded-3xl" />
+          <img src="/assets/OPE.png" className="h-full w-full object-cover rounded-3xl" />
         </div>
       </section>
 

@@ -77,7 +77,7 @@ export default function Home() {
       <div className="grid grid-cols-[500px_minmax(900px,_1fr)] ">
         {myProject.length === 0 ? (
           <a href="/add">
-            <img src="src/assets/first-project.png" alt="" className="mt-6 ml-96 rounded-xl border-2 border-gray-300" />
+            <img src="/assets/first-project.png" alt="" className="mt-6 ml-96 rounded-xl border-2 border-gray-300" />
           </a>
         ) : (
           ""

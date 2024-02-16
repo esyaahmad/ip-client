@@ -62,7 +62,7 @@ export default function Register() {
     <>
       <section className="m-8 flex">
         <div className="w-2/5 h-auto max-h-[660px] hidden lg:block">
-          <img src="/src/assets/OPE (1).png" className="h-full w-full object-cover rounded-3xl" />
+          <img src="/assets/OPE (1).png" className="h-full w-full object-cover rounded-3xl" />
         </div>
         <div className="w-full lg:w-3/5 flex flex-col items-center justify-center">
           <div className="text-center">
@@ -111,7 +111,7 @@ export default function Register() {
                 <GoogleLogin onSuccess={googleLogin} />
               </Button>
               <Button onClick={handleGithub} size="lg" color="white" className="flex items-center gap-2 justify-center shadow-md" fullWidth>
-                <img src="src/assets/25231.png" height={24} width={24} alt="" />
+                <img src="/assets/25231.png" height={24} width={24} alt="" />
                 <span>Sign in With Github</span>
               </Button>
             </div>
