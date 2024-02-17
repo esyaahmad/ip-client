@@ -44,7 +44,7 @@ export default function Home() {
 
   async function handleDelete(id) {
     try {
-      await axios.delete(`http://localhost:3000/projects/${id}`, {
+      await axios.delete(`https://server.esyaahmad.tech/projects/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.access_token}`,
         },
