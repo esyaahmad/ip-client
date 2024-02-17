@@ -10,7 +10,7 @@ export default function ProductsForm({ handleSubmit, product, titleName, desc, i
   const [imageUrl, setImageUrl] = useState("https://mpc.kdu.ac.lk/wp-content/uploads/2022/01/Insert-Image-Here.png");
   const [categoryId, setCategoryId] = useState("");
   const [categories, setCategories] = useState([]);
-  const url = "http://localhost:3000";
+  const url = "https://server.esyaahmad.tech";
 
   //   console.log(product);
   useEffect(() => {

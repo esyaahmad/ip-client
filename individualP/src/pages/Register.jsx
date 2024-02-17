@@ -10,7 +10,8 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const url = "http://localhost:3000";
+  const url = "https://server.esyaahmad.tech";
+
 
   async function handleRegister(e) {
     e.preventDefault();

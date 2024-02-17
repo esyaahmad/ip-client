@@ -9,7 +9,8 @@ export default function patchImage() {
 
   const { id } = useParams();
   const navigate = useNavigate();
-  const url = "http://localhost:3000";
+  const url = "https://server.esyaahmad.tech";
+
 
   async function fetchProduct() {
     try {

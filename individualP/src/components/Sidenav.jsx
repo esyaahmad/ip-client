@@ -17,6 +17,7 @@ export default function DefaultSidebar() {
     navigate("/login");
   }
   return (
+    
     <aside className="hidden md:block fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-72 rounded-xl transition-transform duration-300 xl:translate-x-0 border border-blue-gray-100">
       <Card className="h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
         <div className="mb-2 p-4">

@@ -7,6 +7,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Card, CardHeader, CardBody, CardFooter, Typography, Button } from "@material-tailwind/react";
 
 export default function Home() {
+  const url = "https://server.esyaahmad.tech";
+
   //contoh singkatnya redux ada di src/pages/ImageEditor.jsx
 
   //   const [products, setProducts] = useState([]);
@@ -44,7 +46,7 @@ export default function Home() {
 
   async function handleDelete(id) {
     try {
-      await axios.delete(`http://localhost:3000/projects/${id}`, {
+      await axios.delete(`${url}/projects/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.access_token}`,
         },
@@ -55,7 +57,7 @@ export default function Home() {
         icon: "success",
       });
 
-      fetchData();
+      dispatch(fetchAsync())
     } catch (error) {
       Swal.fire({
         title: error.response.data.error,

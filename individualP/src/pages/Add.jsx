@@ -6,7 +6,8 @@ import Swal from "sweetalert2";
 
 export default function Add() {
   const navigate = useNavigate();
-  const url = "http://localhost:3000";
+  const url = "https://server.esyaahmad.tech";
+
 
   async function handleSubmit(event, title, description, imageUrl, categoryId) {
     event.preventDefault();
