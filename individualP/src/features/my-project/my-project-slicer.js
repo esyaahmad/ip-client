@@ -33,7 +33,7 @@ export const { fetchPending, fetchSuccess, fetchReject } = myProjectSlice.action
 export const fetchAsync = () => async (dispatch) => {
   try {
     dispatch(fetchPending());
-    const { data } = await axios.get(`http://localhost:3000/projects-user`, { headers: { Authorization: `Bearer ${localStorage.access_token}` } });
+    const { data } = await axios.get(`https://server.esyaahmad.tech/projects-user`, { headers: { Authorization: `Bearer ${localStorage.access_token}` } });
     console.log(data);
     dispatch(fetchSuccess(data));
   } catch (error) {
