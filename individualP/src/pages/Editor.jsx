@@ -86,7 +86,7 @@ function App() {
   const selectedOption = options[selectedOptionIndex];
 
   const [product, setProduct] = useState([]);
-  const url = "http://localhost:3000";
+  const url = "https://server.esyaahmad.tech";
 
   const { id } = useParams();
 
